@@ -80,7 +80,7 @@ class Pipe(pygame.sprite.Sprite):
 
     def update(self):
         # Moving Pipes
-        self.rect.x -= scroll_speed
+        self.rect.x -= scroll_speed * 1.5
         if self.rect.x <= -win_width:
             self.kill()
 
@@ -185,7 +185,7 @@ def main():
         if pipe_timer <= 0 and sonic.sprite.alive:
             x_top, x_bottom = 550, 550
             y_top = random.randint(-600, -480)
-            y_bottom = y_top + random.randint(90, 130) + bottom_pipe_image.get_height()
+            y_bottom = y_top + random.randint(105, 125) + bottom_pipe_image.get_height()
             pipes.add(Pipe(x_top, y_top, top_pipe_image, 'top'))
             pipes.add(Pipe(x_bottom, y_bottom, bottom_pipe_image, 'bottom'))
             pipe_timer = random.randint(180, 250)
