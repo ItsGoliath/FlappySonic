@@ -1,8 +1,10 @@
 import pygame
 from sys import exit
+from pygame import mixer
 import random
 
 pygame.init()
+mixer.init()
 clock = pygame.time.Clock()
 
 # Window
@@ -38,6 +40,8 @@ class Sonic(pygame.sprite.Sprite):
         self.vel = 0
         self.flap = False
         self.alive = True
+        self.score_sound = "assets/ScoreSound.mp3"
+        mixer.music.load("assets/ScoreSound.mp3")
 
     def update(self, user_input):
         # Animating
@@ -90,6 +94,7 @@ class Pipe(pygame.sprite.Sprite):
             if self.enter and self.exit and not self.passed:
                 self.passed = True
                 score += 1
+                mixer.music.play()
 
 
 class Ground(pygame.sprite.Sprite):
